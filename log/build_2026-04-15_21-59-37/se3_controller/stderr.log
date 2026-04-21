@@ -1,0 +1,7 @@
+[01m[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:4:10:[m[K [01;31m[Kfatal error: [m[Kmav_msgs/msg/actuators.hpp: No such file or directory
+    4 | #include [01;31m[K<mav_msgs/msg/actuators.hpp>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/controller_node.dir/build.make:76: CMakeFiles/controller_node.dir/src/controller_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/controller_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

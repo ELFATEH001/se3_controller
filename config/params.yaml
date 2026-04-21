@@ -1,0 +1,6 @@
+controller_node:
+  ros__parameters:
+    kx: 6.0 #1.9
+    kv: 4.0 #2.4 
+    kr: 1.5 #3.4
+    komega: 0.5 #0.95

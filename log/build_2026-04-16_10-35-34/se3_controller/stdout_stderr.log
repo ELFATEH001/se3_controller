@@ -1,0 +1,69 @@
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found mavros_msgs: 2.14.0 (/opt/ros/humble/share/mavros_msgs/cmake)
+-- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found tf2_geometry_msgs: 0.25.16 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found tf2_eigen: 0.25.16 (/opt/ros/humble/share/tf2_eigen/cmake)
+-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/aimane/drone_control_ws/src/se3_controller/build/se3_controller
+[ 50%] [32mBuilding CXX object CMakeFiles/controller_node.dir/src/controller_node.cpp.o[0m
+[01m[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:[m[K In constructor ‘[01m[KControllerNode::ControllerNode()[m[K’:
+[01m[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:94:10:[m[K [01;35m[Kwarning: [m[K‘[01m[KControllerNode::yawd[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+   94 |   double [01;35m[Kyawd[m[K = 0.0; // desired yaw angle
+      |          [01;35m[K^~~~[m[K
+[01m[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:79:19:[m[K [01;35m[Kwarning: [m[K  ‘[01m[KEigen::Vector3d ControllerNode::e3[m[K’ [[01;35m[K-Wreorder[m[K]
+   79 |   Eigen::Vector3d [01;35m[Ke3[m[K;  // [0,0,1]
+      |                   [01;35m[K^~[m[K
+[01m[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:106:3:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+  106 |   [01;35m[KControllerNode[m[K() : Node("controller_node"), xd(0,0 ,2.0), vd(0,0 ,0), ad(0,0 ,0), yawd(0.0), e3(0, 0, 1), hz(100) {
+      |   [01;35m[K^~~~~~~~~~~~~~[m[K
+[100%] [32m[1mLinking CXX executable controller_node[0m
+[100%] Built target controller_node
+-- Install configuration: ""
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config/params.yaml
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/se3_controller_launch.py
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/lib/se3_controller/controller_node
+-- Set runtime path of "/home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/lib/se3_controller/controller_node" to ""
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/se3_controller_launch.py
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config/params.yaml
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/package_run_dependencies/se3_controller
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/parent_prefix_path/se3_controller
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/ament_prefix_path.sh
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/ament_prefix_path.dsv
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/path.sh
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/path.dsv
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.bash
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.sh
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.zsh
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.dsv
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/package.dsv
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/packages/se3_controller
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/cmake/se3_controllerConfig.cmake
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/cmake/se3_controllerConfig-version.cmake
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/package.xml

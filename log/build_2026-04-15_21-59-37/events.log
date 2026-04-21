@@ -1,0 +1,161 @@
+[0.000000] (-) TimerEvent: {}
+[0.000171] (se3_controller) JobQueued: {'identifier': 'se3_controller', 'dependencies': OrderedDict()}
+[0.000215] (se3_controller) JobStarted: {'identifier': 'se3_controller'}
+[0.099381] (-) TimerEvent: {}
+[0.144330] (se3_controller) JobProgress: {'identifier': 'se3_controller', 'progress': 'cmake'}
+[0.145459] (se3_controller) Command: {'cmd': ['/usr/bin/cmake', '/home/aimane/drone_control_ws/src/se3_controller', '-DCMAKE_INSTALL_PREFIX=/home/aimane/drone_control_ws/src/se3_controller/install/se3_controller'], 'cwd': '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller', 'env': OrderedDict([('GZ_SIM_SYSTEM_PLUGIN_PATH', '/home/aimane/ardupilot_gazebo/build:'), ('GZ_SIM_RESOURCE_PATH', '/home/aimane/ardupilot_gazebo/models:/home/aimane/ardupilot_gazebo/worlds:/home/aimane/ardupilot_gazebo/models:/home/aimane/ardupilot_gazebo/worlds'), ('HOSTNAME', 'aimane'), ('ROS_PACKAGE_PATH', '/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/share:/home/aimane/vnav23/labs/lab4/install/mav_visualization/share'), ('__GLX_VENDOR_LIBRARY_NAME', 'nvidia'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs/lib:/home/aimane/vnav23/labs/lab4/install/tesse_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation/lib:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/aimane'), ('OLDPWD', '/home/aimane/drone_control_ws/src'), ('ROS_PYTHON_VERSION', '3'), ('ROS_STATIC_PEERS', '10.222.53.166'), ('ROS_LOG_DIR', '/tmp/.ros'), ('COLCON_PREFIX_PATH', '/home/aimane/vnav23/labs/lab4/install:/home/aimane/DevProject/DevArdu_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/lib/x86_64-linux-gnu/pkgconfig:/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/lib/pkgconfig:/home/aimane/vnav23/labs/lab4/install/mav_visualization/lib/x86_64-linux-gnu/pkgconfig:/home/aimane/vnav23/labs/lab4/install/mav_visualization/lib/pkgconfig'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/home/aimane/.local/bin:/home/aimane/ardupilot/Tools/autotest:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('__NV_PRIME_RENDER_OFFLOAD', '1'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/aimane/DevProject/DevArdu_ws/install/trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/sitl_test:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/mav_comm:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs:/home/aimane/DevProject/DevArdu_ws/install/ardupilot_bridge:/home/aimane/vnav23/labs/lab4/install/trajectory_generation:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge:/home/aimane/vnav23/labs/lab4/install/tesse_msgs:/home/aimane/vnav23/labs/lab4/install/planner_pkg:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation:/home/aimane/vnav23/labs/lab4/install/mav_comm:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs:/home/aimane/vnav23/labs/lab4/install/controller_pkg:/home/aimane/vnav23/labs/lab4/install/mav_msgs:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('PWD', '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/home/aimane/DevProject/DevArdu_ws/install/sitl_test/lib/python3.10/site-packages:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp/local/lib/python3.10/dist-packages:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs/local/lib/python3.10/dist-packages:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge/lib/python3.10/site-packages:/home/aimane/vnav23/labs/lab4/install/tesse_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/tesse/lib/python3.10/site-packages:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/mav_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/aimane/DevProject/DevArdu_ws/install/trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp:/home/aimane/DevProject/DevArdu_ws/install/sitl_test:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge:/opt/ros/humble:/home/aimane/DevProject/DevArdu_ws/install/mav_visualization:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/mav_comm:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs:/home/aimane/DevProject/DevArdu_ws/install/ardupilot_bridge:/home/aimane/vnav23/labs/lab4/install/trajectory_generation:/home/aimane/vnav23/labs/lab4/install/tesse_msgs:/home/aimane/vnav23/labs/lab4/install/planner_pkg:/home/aimane/vnav23/labs/lab4/install/mav_visualization:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation:/home/aimane/vnav23/labs/lab4/install/mav_comm:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs:/home/aimane/vnav23/labs/lab4/install/controller_pkg:/home/aimane/vnav23/labs/lab4/install/mav_msgs')]), 'shell': False}
+[0.199500] (-) TimerEvent: {}
+[0.299890] (-) TimerEvent: {}
+[0.400671] (-) TimerEvent: {}
+[0.501120] (-) TimerEvent: {}
+[0.601905] (-) TimerEvent: {}
+[0.702660] (-) TimerEvent: {}
+[0.803415] (-) TimerEvent: {}
+[0.904182] (-) TimerEvent: {}
+[1.005129] (-) TimerEvent: {}
+[1.106053] (-) TimerEvent: {}
+[1.206801] (-) TimerEvent: {}
+[1.307530] (-) TimerEvent: {}
+[1.325668] (se3_controller) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[1.407691] (-) TimerEvent: {}
+[1.508417] (-) TimerEvent: {}
+[1.609186] (-) TimerEvent: {}
+[1.709981] (-) TimerEvent: {}
+[1.810651] (-) TimerEvent: {}
+[1.895728] (se3_controller) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[1.910728] (-) TimerEvent: {}
+[1.914255] (se3_controller) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.010963] (-) TimerEvent: {}
+[2.111799] (-) TimerEvent: {}
+[2.118758] (se3_controller) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[2.128867] (se3_controller) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[2.129562] (se3_controller) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[2.144339] (se3_controller) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[2.152076] (se3_controller) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[2.211926] (-) TimerEvent: {}
+[2.282254] (se3_controller) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.291404] (se3_controller) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[2.291783] (se3_controller) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.292312] (se3_controller) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.312212] (-) TimerEvent: {}
+[2.354363] (se3_controller) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[2.412418] (-) TimerEvent: {}
+[2.512985] (-) TimerEvent: {}
+[2.613308] (-) TimerEvent: {}
+[2.713560] (-) TimerEvent: {}
+[2.813970] (-) TimerEvent: {}
+[2.914587] (-) TimerEvent: {}
+[2.926616] (se3_controller) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[3.014715] (-) TimerEvent: {}
+[3.115077] (-) TimerEvent: {}
+[3.215621] (-) TimerEvent: {}
+[3.316406] (-) TimerEvent: {}
+[3.417343] (-) TimerEvent: {}
+[3.518201] (-) TimerEvent: {}
+[3.562727] (se3_controller) StdoutLine: {'line': b'-- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[3.618440] (-) TimerEvent: {}
+[3.719141] (-) TimerEvent: {}
+[3.819631] (-) TimerEvent: {}
+[3.920069] (-) TimerEvent: {}
+[3.976715] (se3_controller) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[3.991451] (se3_controller) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[4.019187] (se3_controller) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[4.020184] (-) TimerEvent: {}
+[4.120862] (-) TimerEvent: {}
+[4.221444] (-) TimerEvent: {}
+[4.239539] (se3_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.321528] (-) TimerEvent: {}
+[4.354367] (se3_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.421749] (-) TimerEvent: {}
+[4.522526] (-) TimerEvent: {}
+[4.623126] (-) TimerEvent: {}
+[4.708723] (se3_controller) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[4.723248] (-) TimerEvent: {}
+[4.730882] (se3_controller) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[4.823388] (-) TimerEvent: {}
+[4.923772] (-) TimerEvent: {}
+[5.024544] (-) TimerEvent: {}
+[5.125300] (-) TimerEvent: {}
+[5.225757] (-) TimerEvent: {}
+[5.326380] (-) TimerEvent: {}
+[5.414457] (se3_controller) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[5.426588] (-) TimerEvent: {}
+[5.484969] (se3_controller) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[5.526667] (-) TimerEvent: {}
+[5.557606] (se3_controller) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[5.602858] (se3_controller) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[5.626764] (-) TimerEvent: {}
+[5.727163] (-) TimerEvent: {}
+[5.827826] (-) TimerEvent: {}
+[5.855913] (se3_controller) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[5.856588] (se3_controller) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[5.927957] (-) TimerEvent: {}
+[5.964022] (se3_controller) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[5.965541] (se3_controller) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[6.028058] (-) TimerEvent: {}
+[6.128567] (-) TimerEvent: {}
+[6.158624] (se3_controller) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[6.224750] (se3_controller) StdoutLine: {'line': b'-- Found mavros_msgs: 2.14.0 (/opt/ros/humble/share/mavros_msgs/cmake)\n'}
+[6.228816] (-) TimerEvent: {}
+[6.329273] (-) TimerEvent: {}
+[6.430064] (-) TimerEvent: {}
+[6.530354] (-) TimerEvent: {}
+[6.561544] (se3_controller) StdoutLine: {'line': b'-- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[6.622434] (se3_controller) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.25.16 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)\n'}
+[6.630595] (-) TimerEvent: {}
+[6.717979] (se3_controller) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[6.722558] (se3_controller) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[6.722773] (se3_controller) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[6.730648] (-) TimerEvent: {}
+[6.830932] (-) TimerEvent: {}
+[6.931211] (-) TimerEvent: {}
+[6.965315] (se3_controller) StdoutLine: {'line': b'-- Found tf2_eigen: 0.25.16 (/opt/ros/humble/share/tf2_eigen/cmake)\n'}
+[6.981644] (se3_controller) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[7.031308] (-) TimerEvent: {}
+[7.107516] (se3_controller) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[7.107739] (se3_controller) StdoutLine: {'line': b'-- Configured cppcheck include dirs: \n'}
+[7.107848] (se3_controller) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[7.112982] (se3_controller) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[7.125500] (se3_controller) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[7.125676] (se3_controller) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[7.127912] (se3_controller) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[7.131399] (-) TimerEvent: {}
+[7.132283] (se3_controller) StdoutLine: {'line': b'-- Configuring done\n'}
+[7.152583] (se3_controller) StdoutLine: {'line': b'-- Generating done\n'}
+[7.158829] (se3_controller) StdoutLine: {'line': b'-- Build files have been written to: /home/aimane/drone_control_ws/src/se3_controller/build/se3_controller\n'}
+[7.169987] (se3_controller) CommandEnded: {'returncode': 0}
+[7.170696] (se3_controller) JobProgress: {'identifier': 'se3_controller', 'progress': 'build'}
+[7.172178] (se3_controller) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller', '--', '-j8', '-l8'], 'cwd': '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller', 'env': OrderedDict([('GZ_SIM_SYSTEM_PLUGIN_PATH', '/home/aimane/ardupilot_gazebo/build:'), ('GZ_SIM_RESOURCE_PATH', '/home/aimane/ardupilot_gazebo/models:/home/aimane/ardupilot_gazebo/worlds:/home/aimane/ardupilot_gazebo/models:/home/aimane/ardupilot_gazebo/worlds'), ('HOSTNAME', 'aimane'), ('ROS_PACKAGE_PATH', '/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/share:/home/aimane/vnav23/labs/lab4/install/mav_visualization/share'), ('__GLX_VENDOR_LIBRARY_NAME', 'nvidia'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs/lib:/home/aimane/vnav23/labs/lab4/install/tesse_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation/lib:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/aimane'), ('OLDPWD', '/home/aimane/drone_control_ws/src'), ('ROS_PYTHON_VERSION', '3'), ('ROS_STATIC_PEERS', '10.222.53.166'), ('ROS_LOG_DIR', '/tmp/.ros'), ('COLCON_PREFIX_PATH', '/home/aimane/vnav23/labs/lab4/install:/home/aimane/DevProject/DevArdu_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/lib/x86_64-linux-gnu/pkgconfig:/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/lib/pkgconfig:/home/aimane/vnav23/labs/lab4/install/mav_visualization/lib/x86_64-linux-gnu/pkgconfig:/home/aimane/vnav23/labs/lab4/install/mav_visualization/lib/pkgconfig'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/home/aimane/.local/bin:/home/aimane/ardupilot/Tools/autotest:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('__NV_PRIME_RENDER_OFFLOAD', '1'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/aimane/DevProject/DevArdu_ws/install/trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/sitl_test:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/mav_comm:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs:/home/aimane/DevProject/DevArdu_ws/install/ardupilot_bridge:/home/aimane/vnav23/labs/lab4/install/trajectory_generation:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge:/home/aimane/vnav23/labs/lab4/install/tesse_msgs:/home/aimane/vnav23/labs/lab4/install/planner_pkg:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation:/home/aimane/vnav23/labs/lab4/install/mav_comm:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs:/home/aimane/vnav23/labs/lab4/install/controller_pkg:/home/aimane/vnav23/labs/lab4/install/mav_msgs:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('PWD', '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/home/aimane/DevProject/DevArdu_ws/install/sitl_test/lib/python3.10/site-packages:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp/local/lib/python3.10/dist-packages:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs/local/lib/python3.10/dist-packages:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge/lib/python3.10/site-packages:/home/aimane/vnav23/labs/lab4/install/tesse_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/tesse/lib/python3.10/site-packages:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/mav_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/aimane/DevProject/DevArdu_ws/install/trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp:/home/aimane/DevProject/DevArdu_ws/install/sitl_test:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge:/opt/ros/humble:/home/aimane/DevProject/DevArdu_ws/install/mav_visualization:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/mav_comm:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs:/home/aimane/DevProject/DevArdu_ws/install/ardupilot_bridge:/home/aimane/vnav23/labs/lab4/install/trajectory_generation:/home/aimane/vnav23/labs/lab4/install/tesse_msgs:/home/aimane/vnav23/labs/lab4/install/planner_pkg:/home/aimane/vnav23/labs/lab4/install/mav_visualization:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation:/home/aimane/vnav23/labs/lab4/install/mav_comm:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs:/home/aimane/vnav23/labs/lab4/install/controller_pkg:/home/aimane/vnav23/labs/lab4/install/mav_msgs')]), 'shell': False}
+[7.231537] (-) TimerEvent: {}
+[7.251360] (se3_controller) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/controller_node.dir/src/controller_node.cpp.o\x1b[0m\n'}
+[7.331765] (-) TimerEvent: {}
+[7.432547] (-) TimerEvent: {}
+[7.532924] (-) TimerEvent: {}
+[7.633328] (-) TimerEvent: {}
+[7.734128] (-) TimerEvent: {}
+[7.834924] (-) TimerEvent: {}
+[7.935580] (-) TimerEvent: {}
+[8.036095] (-) TimerEvent: {}
+[8.136584] (-) TimerEvent: {}
+[8.236943] (-) TimerEvent: {}
+[8.337301] (-) TimerEvent: {}
+[8.437660] (-) TimerEvent: {}
+[8.537964] (-) TimerEvent: {}
+[8.638310] (-) TimerEvent: {}
+[8.738638] (-) TimerEvent: {}
+[8.839006] (-) TimerEvent: {}
+[8.939421] (-) TimerEvent: {}
+[9.039809] (-) TimerEvent: {}
+[9.140317] (-) TimerEvent: {}
+[9.240617] (-) TimerEvent: {}
+[9.306320] (se3_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:4:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kmav_msgs/msg/actuators.hpp: No such file or directory\n'}
+[9.306570] (se3_controller) StderrLine: {'line': b'    4 | #include \x1b[01;31m\x1b[K<mav_msgs/msg/actuators.hpp>\x1b[m\x1b[K\n'}
+[9.306677] (se3_controller) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[9.306766] (se3_controller) StderrLine: {'line': b'compilation terminated.\n'}
+[9.310754] (se3_controller) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/controller_node.dir/build.make:76: CMakeFiles/controller_node.dir/src/controller_node.cpp.o] Error 1\n'}
+[9.311003] (se3_controller) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/controller_node.dir/all] Error 2\n'}
+[9.311320] (se3_controller) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[9.313985] (se3_controller) CommandEnded: {'returncode': 2}
+[9.340716] (-) TimerEvent: {}
+[9.406795] (se3_controller) JobEnded: {'identifier': 'se3_controller', 'rc': 2}
+[9.418165] (-) EventReactorShutdown: {}

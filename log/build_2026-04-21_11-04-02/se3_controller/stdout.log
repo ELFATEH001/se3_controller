@@ -1,0 +1,30 @@
+[35m[1mConsolidate compiler generated dependencies of target controller_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/controller_node.dir/src/controller_node.cpp.o[0m
+[100%] [32m[1mLinking CXX executable controller_node[0m
+[100%] Built target controller_node
+-- Install configuration: ""
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config/params.yaml
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/se3_controller_launch.py
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/lib/se3_controller/controller_node
+-- Set runtime path of "/home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/lib/se3_controller/controller_node" to ""
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/se3_controller_launch.py
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config/params.yaml
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/package_run_dependencies/se3_controller
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/parent_prefix_path/se3_controller
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/ament_prefix_path.sh
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/path.sh
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/path.dsv
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.bash
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.sh
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.zsh
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.dsv
+-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/package.dsv
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/packages/se3_controller
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/cmake/se3_controllerConfig.cmake
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/cmake/se3_controllerConfig-version.cmake
+-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/package.xml

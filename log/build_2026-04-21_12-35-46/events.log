@@ -1,0 +1,314 @@
+[0.000000] (-) TimerEvent: {}
+[0.000179] (se3_controller) JobQueued: {'identifier': 'se3_controller', 'dependencies': OrderedDict()}
+[0.000248] (se3_controller) JobStarted: {'identifier': 'se3_controller'}
+[0.098672] (-) TimerEvent: {}
+[0.125229] (se3_controller) JobProgress: {'identifier': 'se3_controller', 'progress': 'cmake'}
+[0.157020] (se3_controller) JobProgress: {'identifier': 'se3_controller', 'progress': 'build'}
+[0.159118] (se3_controller) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller', '--', '-j8', '-l8'], 'cwd': '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller', 'env': OrderedDict([('GZ_SIM_SYSTEM_PLUGIN_PATH', '/home/aimane/ardupilot_gazebo/build:'), ('GZ_SIM_RESOURCE_PATH', '/home/aimane/ardupilot_gazebo/models:/home/aimane/ardupilot_gazebo/worlds:/home/aimane/ardupilot_gazebo/models:/home/aimane/ardupilot_gazebo/worlds'), ('HOSTNAME', 'aimane'), ('ROS_PACKAGE_PATH', '/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/share:/home/aimane/vnav23/labs/lab4/install/mav_visualization/share'), ('__GLX_VENDOR_LIBRARY_NAME', 'nvidia'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs/lib:/home/aimane/vnav23/labs/lab4/install/tesse_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation/lib:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/aimane'), ('OLDPWD', '/home/aimane'), ('ROS_PYTHON_VERSION', '3'), ('ROS_LOG_DIR', '/tmp/.ros'), ('COLCON_PREFIX_PATH', '/home/aimane/vnav23/labs/lab4/install:/home/aimane/DevProject/DevArdu_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/lib/x86_64-linux-gnu/pkgconfig:/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/lib/pkgconfig:/home/aimane/vnav23/labs/lab4/install/mav_visualization/lib/x86_64-linux-gnu/pkgconfig:/home/aimane/vnav23/labs/lab4/install/mav_visualization/lib/pkgconfig'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/home/aimane/.local/bin:/home/aimane/ardupilot/Tools/autotest:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('__NV_PRIME_RENDER_OFFLOAD', '1'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/aimane/DevProject/DevArdu_ws/install/trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/sitl_test:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/mav_comm:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs:/home/aimane/DevProject/DevArdu_ws/install/ardupilot_bridge:/home/aimane/vnav23/labs/lab4/install/trajectory_generation:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge:/home/aimane/vnav23/labs/lab4/install/tesse_msgs:/home/aimane/vnav23/labs/lab4/install/planner_pkg:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation:/home/aimane/vnav23/labs/lab4/install/mav_comm:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs:/home/aimane/vnav23/labs/lab4/install/controller_pkg:/home/aimane/vnav23/labs/lab4/install/mav_msgs:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('PWD', '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/home/aimane/DevProject/DevArdu_ws/install/sitl_test/lib/python3.10/site-packages:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp/local/lib/python3.10/dist-packages:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs/local/lib/python3.10/dist-packages:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge/lib/python3.10/site-packages:/home/aimane/vnav23/labs/lab4/install/tesse_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/tesse/lib/python3.10/site-packages:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/mav_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/aimane/DevProject/DevArdu_ws/install/trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp:/home/aimane/DevProject/DevArdu_ws/install/sitl_test:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge:/opt/ros/humble:/home/aimane/DevProject/DevArdu_ws/install/mav_visualization:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/mav_comm:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs:/home/aimane/DevProject/DevArdu_ws/install/ardupilot_bridge:/home/aimane/vnav23/labs/lab4/install/trajectory_generation:/home/aimane/vnav23/labs/lab4/install/tesse_msgs:/home/aimane/vnav23/labs/lab4/install/planner_pkg:/home/aimane/vnav23/labs/lab4/install/mav_visualization:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation:/home/aimane/vnav23/labs/lab4/install/mav_comm:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs:/home/aimane/vnav23/labs/lab4/install/controller_pkg:/home/aimane/vnav23/labs/lab4/install/mav_msgs')]), 'shell': False}
+[0.198866] (-) TimerEvent: {}
+[0.299385] (-) TimerEvent: {}
+[0.399937] (-) TimerEvent: {}
+[0.500913] (-) TimerEvent: {}
+[0.601836] (-) TimerEvent: {}
+[0.676533] (se3_controller) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target controller_node\x1b[0m\n'}
+[0.702076] (-) TimerEvent: {}
+[0.802520] (-) TimerEvent: {}
+[0.903115] (-) TimerEvent: {}
+[1.004060] (-) TimerEvent: {}
+[1.105028] (-) TimerEvent: {}
+[1.143411] (se3_controller) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/controller_node.dir/src/controller_node.cpp.o\x1b[0m\n'}
+[1.205255] (-) TimerEvent: {}
+[1.306067] (-) TimerEvent: {}
+[1.406958] (-) TimerEvent: {}
+[1.507862] (-) TimerEvent: {}
+[1.608497] (-) TimerEvent: {}
+[1.709017] (-) TimerEvent: {}
+[1.809733] (-) TimerEvent: {}
+[1.910720] (-) TimerEvent: {}
+[2.011482] (-) TimerEvent: {}
+[2.112028] (-) TimerEvent: {}
+[2.212628] (-) TimerEvent: {}
+[2.313415] (-) TimerEvent: {}
+[2.414254] (-) TimerEvent: {}
+[2.514683] (-) TimerEvent: {}
+[2.615109] (-) TimerEvent: {}
+[2.715526] (-) TimerEvent: {}
+[2.815910] (-) TimerEvent: {}
+[2.916296] (-) TimerEvent: {}
+[3.016695] (-) TimerEvent: {}
+[3.117136] (-) TimerEvent: {}
+[3.217419] (-) TimerEvent: {}
+[3.317775] (-) TimerEvent: {}
+[3.418490] (-) TimerEvent: {}
+[3.519144] (-) TimerEvent: {}
+[3.619531] (-) TimerEvent: {}
+[3.720016] (-) TimerEvent: {}
+[3.820529] (-) TimerEvent: {}
+[3.921563] (-) TimerEvent: {}
+[4.022523] (-) TimerEvent: {}
+[4.123375] (-) TimerEvent: {}
+[4.224314] (-) TimerEvent: {}
+[4.325018] (-) TimerEvent: {}
+[4.425450] (-) TimerEvent: {}
+[4.526360] (-) TimerEvent: {}
+[4.627154] (-) TimerEvent: {}
+[4.728072] (-) TimerEvent: {}
+[4.828877] (-) TimerEvent: {}
+[4.929319] (-) TimerEvent: {}
+[5.029779] (-) TimerEvent: {}
+[5.130768] (-) TimerEvent: {}
+[5.231513] (-) TimerEvent: {}
+[5.331971] (-) TimerEvent: {}
+[5.432282] (-) TimerEvent: {}
+[5.532641] (-) TimerEvent: {}
+[5.632968] (-) TimerEvent: {}
+[5.733286] (-) TimerEvent: {}
+[5.833591] (-) TimerEvent: {}
+[5.933897] (-) TimerEvent: {}
+[6.034245] (-) TimerEvent: {}
+[6.134571] (-) TimerEvent: {}
+[6.234910] (-) TimerEvent: {}
+[6.335255] (-) TimerEvent: {}
+[6.435541] (-) TimerEvent: {}
+[6.535893] (-) TimerEvent: {}
+[6.636218] (-) TimerEvent: {}
+[6.736501] (-) TimerEvent: {}
+[6.836837] (-) TimerEvent: {}
+[6.937164] (-) TimerEvent: {}
+[7.037445] (-) TimerEvent: {}
+[7.137854] (-) TimerEvent: {}
+[7.238807] (-) TimerEvent: {}
+[7.339702] (-) TimerEvent: {}
+[7.440600] (-) TimerEvent: {}
+[7.540956] (-) TimerEvent: {}
+[7.641291] (-) TimerEvent: {}
+[7.741635] (-) TimerEvent: {}
+[7.841986] (-) TimerEvent: {}
+[7.942328] (-) TimerEvent: {}
+[8.043304] (-) TimerEvent: {}
+[8.143745] (-) TimerEvent: {}
+[8.244118] (-) TimerEvent: {}
+[8.344442] (-) TimerEvent: {}
+[8.444812] (-) TimerEvent: {}
+[8.545162] (-) TimerEvent: {}
+[8.645464] (-) TimerEvent: {}
+[8.745788] (-) TimerEvent: {}
+[8.846136] (-) TimerEvent: {}
+[8.946408] (-) TimerEvent: {}
+[9.046710] (-) TimerEvent: {}
+[9.147020] (-) TimerEvent: {}
+[9.247327] (-) TimerEvent: {}
+[9.347649] (-) TimerEvent: {}
+[9.448007] (-) TimerEvent: {}
+[9.548351] (-) TimerEvent: {}
+[9.635723] (se3_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KControllerNode::ControllerNode()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[9.635936] (se3_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:30:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KControllerNode::yawd\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[9.636039] (se3_controller) StderrLine: {'line': b'   30 |   double \x1b[01;35m\x1b[Kyawd\x1b[m\x1b[K;\n'}
+[9.636127] (se3_controller) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[9.636211] (se3_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:24:19:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[KEigen::Vector3d ControllerNode::e3\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[9.636373] (se3_controller) StderrLine: {'line': b'   24 |   Eigen::Vector3d \x1b[01;35m\x1b[Ke3\x1b[m\x1b[K;\n'}
+[9.636463] (se3_controller) StderrLine: {'line': b'      |                   \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[9.636547] (se3_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:41:3:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[9.636629] (se3_controller) StderrLine: {'line': b'   41 |   \x1b[01;35m\x1b[KControllerNode\x1b[m\x1b[K()\n'}
+[9.636713] (se3_controller) StderrLine: {'line': b'      |   \x1b[01;35m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[9.648449] (-) TimerEvent: {}
+[9.748769] (-) TimerEvent: {}
+[9.849178] (-) TimerEvent: {}
+[9.856576] (se3_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ControllerNode::controlLoop()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[9.856760] (se3_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:129:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Ker\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K-Wunused-but-set-variable\x1b[m\x1b[K]\n'}
+[9.856856] (se3_controller) StderrLine: {'line': b'  129 |     Eigen::Vector3d \x1b[01;35m\x1b[Ker\x1b[m\x1b[K     = 0.5 * Vee(Rd.transpose() * R - R.transpose() * Rd);\n'}
+[9.856939] (se3_controller) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[9.857019] (se3_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/aimane/drone_control_ws/src/se3_controller/src/controller_node.cpp:130:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Keomega\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K-Wunused-but-set-variable\x1b[m\x1b[K]\n'}
+[9.857097] (se3_controller) StderrLine: {'line': b'  130 |     Eigen::Vector3d \x1b[01;35m\x1b[Keomega\x1b[m\x1b[K = omega;\n'}
+[9.857170] (se3_controller) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[9.949418] (-) TimerEvent: {}
+[10.050085] (-) TimerEvent: {}
+[10.150653] (-) TimerEvent: {}
+[10.251262] (-) TimerEvent: {}
+[10.351604] (-) TimerEvent: {}
+[10.452013] (-) TimerEvent: {}
+[10.552752] (-) TimerEvent: {}
+[10.653343] (-) TimerEvent: {}
+[10.753687] (-) TimerEvent: {}
+[10.854025] (-) TimerEvent: {}
+[10.954345] (-) TimerEvent: {}
+[11.054832] (-) TimerEvent: {}
+[11.155204] (-) TimerEvent: {}
+[11.255601] (-) TimerEvent: {}
+[11.355946] (-) TimerEvent: {}
+[11.456429] (-) TimerEvent: {}
+[11.556897] (-) TimerEvent: {}
+[11.657311] (-) TimerEvent: {}
+[11.757727] (-) TimerEvent: {}
+[11.858117] (-) TimerEvent: {}
+[11.958548] (-) TimerEvent: {}
+[12.058970] (-) TimerEvent: {}
+[12.159321] (-) TimerEvent: {}
+[12.259645] (-) TimerEvent: {}
+[12.359973] (-) TimerEvent: {}
+[12.460298] (-) TimerEvent: {}
+[12.560614] (-) TimerEvent: {}
+[12.660990] (-) TimerEvent: {}
+[12.761646] (-) TimerEvent: {}
+[12.862218] (-) TimerEvent: {}
+[12.962550] (-) TimerEvent: {}
+[13.062871] (-) TimerEvent: {}
+[13.163193] (-) TimerEvent: {}
+[13.263528] (-) TimerEvent: {}
+[13.363884] (-) TimerEvent: {}
+[13.464247] (-) TimerEvent: {}
+[13.564579] (-) TimerEvent: {}
+[13.664891] (-) TimerEvent: {}
+[13.765216] (-) TimerEvent: {}
+[13.865572] (-) TimerEvent: {}
+[13.965881] (-) TimerEvent: {}
+[14.066212] (-) TimerEvent: {}
+[14.166539] (-) TimerEvent: {}
+[14.266848] (-) TimerEvent: {}
+[14.367180] (-) TimerEvent: {}
+[14.467473] (-) TimerEvent: {}
+[14.567806] (-) TimerEvent: {}
+[14.668130] (-) TimerEvent: {}
+[14.768442] (-) TimerEvent: {}
+[14.868763] (-) TimerEvent: {}
+[14.969077] (-) TimerEvent: {}
+[15.069465] (-) TimerEvent: {}
+[15.169975] (-) TimerEvent: {}
+[15.270339] (-) TimerEvent: {}
+[15.370731] (-) TimerEvent: {}
+[15.471440] (-) TimerEvent: {}
+[15.571840] (-) TimerEvent: {}
+[15.672148] (-) TimerEvent: {}
+[15.772591] (-) TimerEvent: {}
+[15.872951] (-) TimerEvent: {}
+[15.973309] (-) TimerEvent: {}
+[16.073670] (-) TimerEvent: {}
+[16.174140] (-) TimerEvent: {}
+[16.274566] (-) TimerEvent: {}
+[16.375244] (-) TimerEvent: {}
+[16.475579] (-) TimerEvent: {}
+[16.575988] (-) TimerEvent: {}
+[16.676283] (-) TimerEvent: {}
+[16.776582] (-) TimerEvent: {}
+[16.876904] (-) TimerEvent: {}
+[16.977203] (-) TimerEvent: {}
+[17.077493] (-) TimerEvent: {}
+[17.177786] (-) TimerEvent: {}
+[17.278080] (-) TimerEvent: {}
+[17.378359] (-) TimerEvent: {}
+[17.478659] (-) TimerEvent: {}
+[17.578961] (-) TimerEvent: {}
+[17.679247] (-) TimerEvent: {}
+[17.779590] (-) TimerEvent: {}
+[17.879891] (-) TimerEvent: {}
+[17.980190] (-) TimerEvent: {}
+[18.080456] (-) TimerEvent: {}
+[18.180756] (-) TimerEvent: {}
+[18.281074] (-) TimerEvent: {}
+[18.381317] (-) TimerEvent: {}
+[18.481618] (-) TimerEvent: {}
+[18.581921] (-) TimerEvent: {}
+[18.682308] (-) TimerEvent: {}
+[18.782744] (-) TimerEvent: {}
+[18.883112] (-) TimerEvent: {}
+[18.983459] (-) TimerEvent: {}
+[19.083823] (-) TimerEvent: {}
+[19.184232] (-) TimerEvent: {}
+[19.284606] (-) TimerEvent: {}
+[19.385035] (-) TimerEvent: {}
+[19.485402] (-) TimerEvent: {}
+[19.585735] (-) TimerEvent: {}
+[19.686016] (-) TimerEvent: {}
+[19.786334] (-) TimerEvent: {}
+[19.886637] (-) TimerEvent: {}
+[19.986947] (-) TimerEvent: {}
+[20.087267] (-) TimerEvent: {}
+[20.187544] (-) TimerEvent: {}
+[20.287851] (-) TimerEvent: {}
+[20.388154] (-) TimerEvent: {}
+[20.488482] (-) TimerEvent: {}
+[20.588835] (-) TimerEvent: {}
+[20.689140] (-) TimerEvent: {}
+[20.789494] (-) TimerEvent: {}
+[20.889832] (-) TimerEvent: {}
+[20.990178] (-) TimerEvent: {}
+[21.090556] (-) TimerEvent: {}
+[21.190873] (-) TimerEvent: {}
+[21.291174] (-) TimerEvent: {}
+[21.391475] (-) TimerEvent: {}
+[21.491757] (-) TimerEvent: {}
+[21.592058] (-) TimerEvent: {}
+[21.692427] (-) TimerEvent: {}
+[21.792773] (-) TimerEvent: {}
+[21.893124] (-) TimerEvent: {}
+[21.942925] (se3_controller) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable controller_node\x1b[0m\n'}
+[21.993364] (-) TimerEvent: {}
+[22.093996] (-) TimerEvent: {}
+[22.194709] (-) TimerEvent: {}
+[22.295420] (-) TimerEvent: {}
+[22.395855] (-) TimerEvent: {}
+[22.496461] (-) TimerEvent: {}
+[22.596840] (-) TimerEvent: {}
+[22.697379] (-) TimerEvent: {}
+[22.797988] (-) TimerEvent: {}
+[22.898800] (-) TimerEvent: {}
+[22.999298] (-) TimerEvent: {}
+[23.099932] (-) TimerEvent: {}
+[23.200396] (-) TimerEvent: {}
+[23.301083] (-) TimerEvent: {}
+[23.401677] (-) TimerEvent: {}
+[23.502293] (-) TimerEvent: {}
+[23.602859] (-) TimerEvent: {}
+[23.703757] (-) TimerEvent: {}
+[23.804622] (-) TimerEvent: {}
+[23.905520] (-) TimerEvent: {}
+[24.006282] (-) TimerEvent: {}
+[24.107046] (-) TimerEvent: {}
+[24.208020] (-) TimerEvent: {}
+[24.308510] (-) TimerEvent: {}
+[24.408838] (-) TimerEvent: {}
+[24.509175] (-) TimerEvent: {}
+[24.609553] (-) TimerEvent: {}
+[24.709962] (-) TimerEvent: {}
+[24.726402] (se3_controller) StdoutLine: {'line': b'[100%] Built target controller_node\n'}
+[24.748241] (se3_controller) CommandEnded: {'returncode': 0}
+[24.810101] (-) TimerEvent: {}
+[24.910371] (-) TimerEvent: {}
+[24.953777] (se3_controller) JobProgress: {'identifier': 'se3_controller', 'progress': 'install'}
+[24.965254] (se3_controller) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller'], 'cwd': '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller', 'env': OrderedDict([('GZ_SIM_SYSTEM_PLUGIN_PATH', '/home/aimane/ardupilot_gazebo/build:'), ('GZ_SIM_RESOURCE_PATH', '/home/aimane/ardupilot_gazebo/models:/home/aimane/ardupilot_gazebo/worlds:/home/aimane/ardupilot_gazebo/models:/home/aimane/ardupilot_gazebo/worlds'), ('HOSTNAME', 'aimane'), ('ROS_PACKAGE_PATH', '/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/share:/home/aimane/vnav23/labs/lab4/install/mav_visualization/share'), ('__GLX_VENDOR_LIBRARY_NAME', 'nvidia'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs/lib:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs/lib:/home/aimane/vnav23/labs/lab4/install/tesse_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation/lib:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs/lib:/home/aimane/vnav23/labs/lab4/install/mav_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/aimane'), ('OLDPWD', '/home/aimane'), ('ROS_PYTHON_VERSION', '3'), ('ROS_LOG_DIR', '/tmp/.ros'), ('COLCON_PREFIX_PATH', '/home/aimane/vnav23/labs/lab4/install:/home/aimane/DevProject/DevArdu_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/lib/x86_64-linux-gnu/pkgconfig:/home/aimane/DevProject/DevArdu_ws/install/mav_visualization/lib/pkgconfig:/home/aimane/vnav23/labs/lab4/install/mav_visualization/lib/x86_64-linux-gnu/pkgconfig:/home/aimane/vnav23/labs/lab4/install/mav_visualization/lib/pkgconfig'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/home/aimane/.local/bin:/home/aimane/ardupilot/Tools/autotest:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('__NV_PRIME_RENDER_OFFLOAD', '1'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/aimane/DevProject/DevArdu_ws/install/trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/sitl_test:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/mav_comm:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs:/home/aimane/DevProject/DevArdu_ws/install/ardupilot_bridge:/home/aimane/vnav23/labs/lab4/install/trajectory_generation:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge:/home/aimane/vnav23/labs/lab4/install/tesse_msgs:/home/aimane/vnav23/labs/lab4/install/planner_pkg:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation:/home/aimane/vnav23/labs/lab4/install/mav_comm:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs:/home/aimane/vnav23/labs/lab4/install/controller_pkg:/home/aimane/vnav23/labs/lab4/install/mav_msgs:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('PWD', '/home/aimane/drone_control_ws/src/se3_controller/build/se3_controller'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/home/aimane/DevProject/DevArdu_ws/install/sitl_test/lib/python3.10/site-packages:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp/local/lib/python3.10/dist-packages:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs/local/lib/python3.10/dist-packages:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge/lib/python3.10/site-packages:/home/aimane/vnav23/labs/lab4/install/tesse_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/tesse/lib/python3.10/site-packages:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs/local/lib/python3.10/dist-packages:/home/aimane/vnav23/labs/lab4/install/mav_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('NVIDIA_VISIBLE_DEVICES', 'all'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/aimane/DevProject/DevArdu_ws/install/trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/sitl_comm_cpp:/home/aimane/DevProject/DevArdu_ws/install/sitl_test:/home/aimane/vnav23/labs/lab4/install/tesse_ros_bridge:/opt/ros/humble:/home/aimane/DevProject/DevArdu_ws/install/mav_visualization:/home/aimane/DevProject/DevArdu_ws/install/mav_trajectory_generation:/home/aimane/DevProject/DevArdu_ws/install/mav_comm:/home/aimane/DevProject/DevArdu_ws/install/mav_system_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_state_machine_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_planning_msgs:/home/aimane/DevProject/DevArdu_ws/install/mav_msgs:/home/aimane/DevProject/DevArdu_ws/install/ardupilot_bridge:/home/aimane/vnav23/labs/lab4/install/trajectory_generation:/home/aimane/vnav23/labs/lab4/install/tesse_msgs:/home/aimane/vnav23/labs/lab4/install/planner_pkg:/home/aimane/vnav23/labs/lab4/install/mav_visualization:/home/aimane/vnav23/labs/lab4/install/mav_trajectory_generation:/home/aimane/vnav23/labs/lab4/install/mav_comm:/home/aimane/vnav23/labs/lab4/install/mav_system_msgs:/home/aimane/vnav23/labs/lab4/install/mav_state_machine_msgs:/home/aimane/vnav23/labs/lab4/install/mav_planning_msgs:/home/aimane/vnav23/labs/lab4/install/controller_pkg:/home/aimane/vnav23/labs/lab4/install/mav_msgs')]), 'shell': False}
+[25.010491] (-) TimerEvent: {}
+[25.110970] (-) TimerEvent: {}
+[25.211658] (-) TimerEvent: {}
+[25.312069] (-) TimerEvent: {}
+[25.412749] (-) TimerEvent: {}
+[25.423300] (se3_controller) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[25.432865] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config\n'}
+[25.433860] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config/params.yaml\n'}
+[25.434281] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch\n'}
+[25.434584] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/se3_controller_launch.py\n'}
+[25.487723] (se3_controller) StdoutLine: {'line': b'-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/lib/se3_controller/controller_node\n'}
+[25.498096] (se3_controller) StdoutLine: {'line': b'-- Set runtime path of "/home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/lib/se3_controller/controller_node" to ""\n'}
+[25.498588] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch\n'}
+[25.498769] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/se3_controller_launch.py\n'}
+[25.499164] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config\n'}
+[25.499429] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config/params.yaml\n'}
+[25.499584] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/package_run_dependencies/se3_controller\n'}
+[25.499730] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/parent_prefix_path/se3_controller\n'}
+[25.499872] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/ament_prefix_path.sh\n'}
+[25.500146] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/ament_prefix_path.dsv\n'}
+[25.500298] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/path.sh\n'}
+[25.500446] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/environment/path.dsv\n'}
+[25.500581] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.bash\n'}
+[25.500710] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.sh\n'}
+[25.500845] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.zsh\n'}
+[25.500969] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/local_setup.dsv\n'}
+[25.501094] (se3_controller) StdoutLine: {'line': b'-- Installing: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/package.dsv\n'}
+[25.512963] (-) TimerEvent: {}
+[25.535044] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/packages/se3_controller\n'}
+[25.535396] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/cmake/se3_controllerConfig.cmake\n'}
+[25.535509] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/cmake/se3_controllerConfig-version.cmake\n'}
+[25.535610] (se3_controller) StdoutLine: {'line': b'-- Up-to-date: /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/package.xml\n'}
+[25.537963] (se3_controller) CommandEnded: {'returncode': 0}
+[25.614158] (-) TimerEvent: {}
+[25.705696] (se3_controller) JobEnded: {'identifier': 'se3_controller', 'rc': 0}
+[25.707202] (-) EventReactorShutdown: {}
