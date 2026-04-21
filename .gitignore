@@ -1,0 +1,105 @@
+# Build and installation directories
+build/
+install/
+log/
+
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# C++
+*.o
+*.obj
+*.exe
+*.dll
+*.so.*
+*.dylib
+*.a
+*.lib
+*.out
+*.app
+*.d
+*.d.*
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+*.cmake
+!CMakeLists.txt
+!*.cmake.in
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+*.orig
+.clangd
+.cache/
+compile_commands.json
+
+# ROS2 specific
+src/CMakeLists.txt  # if it's symlinked from package root
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*~
+
+# Logs and bag files
+*.bag
+*.db3
+*.log
+*.txt  # if you have generated text files
+*.png  # if you save images
+*.jpg
+*.pdf
+*.svg
+*.csv
+
+# Colcon
+colcon_*
+
+# Doxygen
+docs/html/
+docs/latex/
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.tmp
+
+# Compiled messages and services
+*/msg/*_msg.py
+*/srv/*_srv.py
+*/action/*_action.py
+
+# Custom - add your own generated files or directories here
+# my_generated_data/
+# results/
