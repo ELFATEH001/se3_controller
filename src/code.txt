@@ -1,0 +1,167 @@
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp/qos.hpp>
+#include <cmath>
+#include <algorithm>
+#include <mavros_msgs/msg/attitude_target.hpp>
+#include <nav_msgs/msg/odometry.hpp>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2/utils.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+#include <eigen3/Eigen/Dense>
+#include <tf2_eigen/tf2_eigen.hpp>
+#include <cstdlib>
+
+#define PI M_PI
+
+class ControllerNode : public rclcpp::Node {
+  rclcpp::TimerBase::SharedPtr timer_;
+  rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr current_state_subscription_;
+  rclcpp::Publisher<mavros_msgs::msg::AttitudeTarget>::SharedPtr propeller_speeds_publisher_;
+
+  double kx, kv, kr, komega;
+  double m, g;
+  Eigen::Matrix3d J;
+  Eigen::Vector3d e3;
+
+  Eigen::Vector3d x, v, omega;
+  Eigen::Matrix3d R;
+
+  Eigen::Vector3d xd, vd, ad;
+  double yawd;
+  int64_t hz;
+  bool yaw_initialized_ = false;
+
+  static Eigen::Vector3d Vee(const Eigen::Matrix3d &in) {
+    Eigen::Vector3d out;
+    out << in(2,1), in(0,2), in(1,0);
+    return out;
+  }
+
+public:
+  ControllerNode()
+  : Node("controller_node"),
+    xd(0, 0, 2.0), vd(0, 0, 0), ad(0, 0, 0),
+    yawd(0.0), e3(0, 0, 1), hz(100)
+  {
+    declare_parameter<double>("kx");
+    declare_parameter<double>("kv");
+    declare_parameter<double>("kr");
+    declare_parameter<double>("komega");
+
+    // Subscriber with BestEffort QoS to match MAVROS
+    auto qos = rclcpp::QoS(rclcpp::KeepLast(10))
+                 .reliability(rclcpp::ReliabilityPolicy::BestEffort)
+                 .durability(rclcpp::DurabilityPolicy::Volatile);
+
+    current_state_subscription_ = this->create_subscription<nav_msgs::msg::Odometry>(
+      "/mavros/local_position/odom", qos,
+      std::bind(&ControllerNode::onCurrentState, this, std::placeholders::_1));
+
+    // Publisher with BestEffort QoS to match MAVROS
+    auto qos_pub = rclcpp::QoS(rclcpp::KeepLast(10))
+                     .reliability(rclcpp::ReliabilityPolicy::BestEffort)
+                     .durability(rclcpp::DurabilityPolicy::Volatile);
+
+    propeller_speeds_publisher_ = this->create_publisher<mavros_msgs::msg::AttitudeTarget>(
+      "/mavros/setpoint_attitude/attitude", qos_pub);
+
+    timer_ = this->create_wall_timer(
+      std::chrono::milliseconds(1000 / hz),
+      std::bind(&ControllerNode::controlLoop, this));
+
+    if (!(get_parameter("kx", kx) && get_parameter("kv", kv) &&
+          get_parameter("kr", kr) && get_parameter("komega", komega))) {
+      RCLCPP_ERROR(this->get_logger(), "Failed to get controller gains");
+      exit(1);
+    }
+
+    m = 1.6;
+    g = 9.81;
+    J << 0.0347563, 0.0,       0.0,
+         0.0,       0.0458929, 0.0,
+         0.0,       0.0,       0.0796;
+  }
+
+  void onCurrentState(const nav_msgs::msg::Odometry &cur_state) {
+    x << cur_state.pose.pose.position.x,
+         cur_state.pose.pose.position.y,
+         cur_state.pose.pose.position.z;
+    v << cur_state.twist.twist.linear.x,
+         cur_state.twist.twist.linear.y,
+         cur_state.twist.twist.linear.z;
+
+    Eigen::Quaterniond q;
+    tf2::fromMsg(cur_state.pose.pose.orientation, q);
+    R = q.toRotationMatrix();
+
+    Eigen::Vector3d omega_world;
+    omega_world << cur_state.twist.twist.angular.x,
+                   cur_state.twist.twist.angular.y,
+                   cur_state.twist.twist.angular.z;
+    omega = omega_world;
+
+    // Initialize yaw from first odometry message
+    if (!yaw_initialized_) {
+      tf2::Quaternion q_tf;
+      tf2::fromMsg(cur_state.pose.pose.orientation, q_tf);
+      yawd = tf2::getYaw(q_tf);
+      yaw_initialized_ = true;
+      RCLCPP_INFO(this->get_logger(), "Yaw initialized to: %.3f rad", yawd);
+    }
+  }
+
+  void controlLoop() {
+    if (!yaw_initialized_) return;
+
+    Eigen::Vector3d ex = x - xd;
+    Eigen::Vector3d ev = v - vd;
+
+    // Bug 2 fix: clamp corrective force
+    Eigen::Vector3d F_corr = -kx * ex - kv * ev + m * ad;
+    double max_corr = 1.5 * m * g;
+    if (F_corr.norm() > max_corr) {
+        F_corr = F_corr * (max_corr / F_corr.norm());
+    }
+    Eigen::Vector3d F_des = F_corr + m * g * e3;
+
+    // Bug 3 fix: guard zero norm
+    double F_norm = F_des.norm();
+    if (F_norm < 1e-6) return;
+    Eigen::Vector3d b3d = F_des / F_norm;
+
+    Eigen::Vector3d b1d(cos(yawd), sin(yawd), 0);
+    Eigen::Vector3d b2d = b3d.cross(b1d).normalized();
+    b1d = b2d.cross(b3d);
+
+    Eigen::Matrix3d Rd;
+    Rd << b1d, b2d, b3d;
+
+    Eigen::Vector3d er     = 0.5 * Vee(Rd.transpose() * R - R.transpose() * Rd);
+    Eigen::Vector3d eomega = omega;
+
+    double f = F_des.dot(R * e3);
+    double max_thrust = 2.0 * m * g;
+
+    mavros_msgs::msg::AttitudeTarget msg;
+    Eigen::Quaterniond quat_des(Rd);
+
+    msg.header.stamp    = this->get_clock()->now();
+    msg.type_mask       = 0b00000111;
+    msg.orientation.x   = quat_des.x();
+    msg.orientation.y   = quat_des.y();
+    msg.orientation.z   = quat_des.z();
+    msg.orientation.w   = quat_des.w();
+
+    // Bug 5 fix: cap thrust
+    msg.thrust = std::clamp(f / max_thrust, 0.1, 0.85);
+
+    propeller_speeds_publisher_->publish(msg);
+  }
+};
+
+int main(int argc, char *argv[]) {
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<ControllerNode>());
+  rclcpp::shutdown();
+  return 0;
+}

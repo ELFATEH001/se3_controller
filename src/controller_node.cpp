@@ -29,7 +29,11 @@ class ControllerNode : public rclcpp::Node {
   Eigen::Vector3d xd, vd, ad;
   double yawd;
   int64_t hz;
-  bool yaw_initialized_ = false;
+
+  bool yaw_initialized_    = false;
+  bool target_initialized_ = false;
+  double xd_z_ramp_        = 0.0;
+  static constexpr double CLIMB_RATE = 0.3; // m/s
 
   static Eigen::Vector3d Vee(const Eigen::Matrix3d &in) {
     Eigen::Vector3d out;
@@ -43,45 +47,72 @@ public:
     xd(0, 0, 2.0), vd(0, 0, 0), ad(0, 0, 0),
     yawd(0.0), e3(0, 0, 1), hz(100)
   {
-    declare_parameter<double>("kx");
-    declare_parameter<double>("kv");
-    declare_parameter<double>("kr");
-    declare_parameter<double>("komega");
+    x.setZero(); v.setZero(); omega.setZero(); R.setIdentity();
 
-    // Subscriber with BestEffort QoS to match MAVROS
-    auto qos = rclcpp::QoS(rclcpp::KeepLast(10))
-                 .reliability(rclcpp::ReliabilityPolicy::BestEffort)
-                 .durability(rclcpp::DurabilityPolicy::Volatile);
+    // Declare parameters with safe defaults so the node doesn't crash
+    // if gains are not passed — override at launch with -p kx:=4.0 etc.
+    declare_parameter<double>("kx",     4.0);
+    declare_parameter<double>("kv",     2.5);
+    declare_parameter<double>("kr",     1.5);
+    declare_parameter<double>("komega", 0.5);
 
-    current_state_subscription_ = this->create_subscription<nav_msgs::msg::Odometry>(
-      "/mavros/local_position/odom", qos,
-      std::bind(&ControllerNode::onCurrentState, this, std::placeholders::_1));
+    get_parameter("kx",     kx);
+    get_parameter("kv",     kv);
+    get_parameter("kr",     kr);
+    get_parameter("komega", komega);
 
-    // Publisher with BestEffort QoS to match MAVROS
-    auto qos_pub = rclcpp::QoS(rclcpp::KeepLast(10))
+    // ---------------------------------------------------------------
+    // Subscriber QoS: match MAVROS odometry publisher (BestEffort)
+    // ---------------------------------------------------------------
+    auto sub_qos = rclcpp::QoS(rclcpp::KeepLast(10))
                      .reliability(rclcpp::ReliabilityPolicy::BestEffort)
                      .durability(rclcpp::DurabilityPolicy::Volatile);
 
+    current_state_subscription_ = this->create_subscription<nav_msgs::msg::Odometry>(
+      "/mavros/local_position/odom", sub_qos,
+      std::bind(&ControllerNode::onCurrentState, this, std::placeholders::_1));
+
+    // ---------------------------------------------------------------
+    // FIX: publish to /mavros/setpoint_raw/attitude, NOT
+    //      /mavros/setpoint_attitude/attitude.
+    //
+    //  - setpoint_attitude/attitude expects geometry_msgs/PoseStamped
+    //    and splits thrust onto a separate topic — it does NOT accept
+    //    AttitudeTarget and ignores type_mask entirely.
+    //
+    //  - setpoint_raw/attitude accepts mavros_msgs/AttitudeTarget
+    //    with unified attitude + thrust + type_mask in one message,
+    //    which maps directly to MAVLink SET_ATTITUDE_TARGET.
+    //    This is the correct injection point for SE(3).
+    //
+    // Publisher QoS: use Reliable so MAVROS does not silently drop
+    // messages when its internal queue is briefly busy.
+    // ---------------------------------------------------------------
+    auto pub_qos = rclcpp::QoS(rclcpp::KeepLast(10))
+                     .reliability(rclcpp::ReliabilityPolicy::Reliable)
+                     .durability(rclcpp::DurabilityPolicy::Volatile);
+
     propeller_speeds_publisher_ = this->create_publisher<mavros_msgs::msg::AttitudeTarget>(
-      "/mavros/setpoint_attitude/attitude", qos_pub);
+      "/mavros/setpoint_raw/attitude", pub_qos);
 
     timer_ = this->create_wall_timer(
       std::chrono::milliseconds(1000 / hz),
       std::bind(&ControllerNode::controlLoop, this));
-
-    if (!(get_parameter("kx", kx) && get_parameter("kv", kv) &&
-          get_parameter("kr", kr) && get_parameter("komega", komega))) {
-      RCLCPP_ERROR(this->get_logger(), "Failed to get controller gains");
-      exit(1);
-    }
 
     m = 1.6;
     g = 9.81;
     J << 0.0347563, 0.0,       0.0,
          0.0,       0.0458929, 0.0,
          0.0,       0.0,       0.0796;
+
+    RCLCPP_INFO(this->get_logger(),
+      "SE3 Controller started | kx=%.2f kv=%.2f kr=%.2f komega=%.2f",
+      kx, kv, kr, komega);
+    RCLCPP_INFO(this->get_logger(),
+      "Publishing to /mavros/setpoint_raw/attitude — waiting for first odometry...");
   }
 
+  // -------------------------------------------------------------------
   void onCurrentState(const nav_msgs::msg::Odometry &cur_state) {
     x << cur_state.pose.pose.position.x,
          cur_state.pose.pose.position.y,
@@ -94,13 +125,10 @@ public:
     tf2::fromMsg(cur_state.pose.pose.orientation, q);
     R = q.toRotationMatrix();
 
-    Eigen::Vector3d omega_world;
-    omega_world << cur_state.twist.twist.angular.x,
-                   cur_state.twist.twist.angular.y,
-                   cur_state.twist.twist.angular.z;
-    omega = R.transpose() * omega_world;
+    omega << cur_state.twist.twist.angular.x,
+             cur_state.twist.twist.angular.y,
+             cur_state.twist.twist.angular.z;
 
-    // Initialize yaw from first odometry message
     if (!yaw_initialized_) {
       tf2::Quaternion q_tf;
       tf2::fromMsg(cur_state.pose.pose.orientation, q_tf);
@@ -110,39 +138,97 @@ public:
     }
   }
 
+  // -------------------------------------------------------------------
   void controlLoop() {
+    // Block until at least one odometry message has been received
     if (!yaw_initialized_) return;
 
-    Eigen::Vector3d ex = x - xd;
+    // Latch XY target at current position on first run; start Z ramp
+    if (!target_initialized_) {
+      xd_z_ramp_ = std::max(x.z(), 0.0);
+      xd.x()     = x.x();
+      xd.y()     = x.y();
+      target_initialized_ = true;
+      RCLCPP_INFO(this->get_logger(),
+        "Target initialized at [%.2f, %.2f, %.2f]",
+        xd.x(), xd.y(), xd_z_ramp_);
+    }
+
+    // Ramp altitude up to 2 m at CLIMB_RATE m/s
+    if (xd_z_ramp_ < 2.0) {
+      xd_z_ramp_ = std::min(
+        xd_z_ramp_ + CLIMB_RATE / static_cast<double>(hz), 2.0);
+    }
+
+    Eigen::Vector3d xd_now(xd.x(), xd.y(), xd_z_ramp_);
+    Eigen::Vector3d ex = x - xd_now;
     Eigen::Vector3d ev = v - vd;
 
-    Eigen::Vector3d F_des = -kx * ex - kv * ev + m * g * e3 + m * ad;
+    // ------------------------------------------------------------------
+    // SE(3) Step 1 — Desired force vector
+    // Fdes = -kx*ex - kv*ev + m*ad + m*g*e3
+    // This replaces AC_PosControl's cascaded position+velocity PIDs.
+    // ------------------------------------------------------------------
+    Eigen::Vector3d F_corr = -kx * ex - kv * ev + m * ad;
+    double max_corr = 1.5 * m * g;
+    if (F_corr.norm() > max_corr)
+      F_corr = F_corr * (max_corr / F_corr.norm());
 
-    Eigen::Vector3d b3d = F_des / F_des.norm();
-    Eigen::Vector3d b1d(cos(yawd), sin(yawd), 0);
+    Eigen::Vector3d F_des = F_corr + m * g * e3;
+
+    double F_norm = F_des.norm();
+    if (F_norm < 1e-6) return;
+
+    // ------------------------------------------------------------------
+    // SE(3) Step 2 — Desired orientation Rd on SO(3)
+    // b3d is the desired body-z (thrust) direction in world frame.
+    // ------------------------------------------------------------------
+    Eigen::Vector3d b3d = F_des / F_norm;
+    Eigen::Vector3d b1d(std::cos(yawd), std::sin(yawd), 0.0);
     Eigen::Vector3d b2d = b3d.cross(b1d).normalized();
     b1d = b2d.cross(b3d);
 
     Eigen::Matrix3d Rd;
-    Rd << b1d, b2d, b3d;
+    Rd.col(0) = b1d;
+    Rd.col(1) = b2d;
+    Rd.col(2) = b3d;
 
-    Eigen::Vector3d er     = 0.5 * Vee(Rd.transpose() * R - R.transpose() * Rd);
-    Eigen::Vector3d eomega = omega;
+    // Collective thrust: projection of desired force onto current body-z.
+    // Clamped to [0.1, 0.85] in normalised [0,1] throttle range.
+    double f         = std::max(F_des.dot(R * e3), 0.0);
+    double thrust_n  = std::clamp(f / (2.0 * m * g), 0.1, 0.85);
 
-    double f = F_des.dot(R * e3);
-    // tau computed but not used yet (ArduPilot handles inner loop)
-    // Eigen::Vector3d tau = -kr * er - komega * eomega + omega.cross(J * omega);
-
+    // ------------------------------------------------------------------
+    // Build AttitudeTarget message
+    //
+    // type_mask bit field (mavros_msgs/AttitudeTarget):
+    //   bit 0 = ignore body roll rate
+    //   bit 1 = ignore body pitch rate
+    //   bit 2 = ignore body yaw rate
+    //   bit 7 = ignore attitude (only rates + thrust)
+    //
+    // type_mask = 0b00000111 = 7  →  ignore body rates, use attitude+thrust
+    // This tells AC_AttitudeControl to track Rd directly.
+    // ------------------------------------------------------------------
     mavros_msgs::msg::AttitudeTarget msg;
-    Eigen::Quaterniond quat_des(Rd);
+    msg.header.stamp    = this->get_clock()->now();
+    msg.header.frame_id = "base_link";
+    msg.type_mask       = mavros_msgs::msg::AttitudeTarget::IGNORE_ROLL_RATE |
+                          mavros_msgs::msg::AttitudeTarget::IGNORE_PITCH_RATE |
+                          mavros_msgs::msg::AttitudeTarget::IGNORE_YAW_RATE;
 
-    msg.header.stamp = this->get_clock()->now();
-    msg.type_mask    = 0b00000111;
+    Eigen::Quaterniond quat_des(Rd);
+    quat_des.normalize();
     msg.orientation.x = quat_des.x();
     msg.orientation.y = quat_des.y();
     msg.orientation.z = quat_des.z();
     msg.orientation.w = quat_des.w();
-    msg.thrust = std::clamp(f / (2.0 * m * g), 0.0, 1.0);
+
+    msg.body_rate.x = 0.0;
+    msg.body_rate.y = 0.0;
+    msg.body_rate.z = 0.0;
+
+    msg.thrust = thrust_n;
 
     propeller_speeds_publisher_->publish(msg);
   }
