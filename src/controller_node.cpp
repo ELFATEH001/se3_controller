@@ -21,7 +21,7 @@ class ControllerNode : public rclcpp::Node {
   rclcpp::Publisher<mavros_msgs::msg::AttitudeTarget>::SharedPtr propeller_speeds_publisher_;
   rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr debug_pub_;
 
-  double kx, kv, kr, komega;
+  double kx, kv, kr, komega, T_MAX_RATIO;
   double m, g;
   Eigen::Matrix3d J;
   Eigen::Vector3d e3;
@@ -58,11 +58,13 @@ public:
     declare_parameter<double>("kv",     2.0);
     declare_parameter<double>("kr",     1.5);
     declare_parameter<double>("komega", 0.5);
+    declare_parameter<double>("T_MAX_RATIO", 3.06);
 
     get_parameter("kx",     kx);
     get_parameter("kv",     kv);
     get_parameter("kr",     kr);
     get_parameter("komega", komega);
+    get_parameter("T_MAX_RATIO", T_MAX_RATIO);
 
     // ---------------------------------------------------------------
     // Subscriber QoS: match MAVROS odometry publisher (BestEffort)
@@ -113,8 +115,8 @@ public:
          0.0,       0.0,       0.0796;
 
     RCLCPP_INFO(this->get_logger(),
-      "SE3 Controller started | kx=%.2f kv=%.2f kr=%.2f komega=%.2f",
-      kx, kv, kr, komega);
+      "SE3 Controller started | kx=%.2f kv=%.2f kr=%.2f komega=%.2f T_MAX_RATIO=%.2f",
+      kx, kv, kr, komega, T_MAX_RATIO);
     RCLCPP_INFO(this->get_logger(),
       "Publishing to /mavros/setpoint_raw/attitude — waiting for first odometry...");
   }
@@ -124,9 +126,13 @@ public:
     x << cur_state.pose.pose.position.x,
          cur_state.pose.pose.position.y,
          cur_state.pose.pose.position.z;
-    v << cur_state.twist.twist.linear.x,
+    
+    Eigen::Vector3d v_body;
+    v_body << cur_state.twist.twist.linear.x,
          cur_state.twist.twist.linear.y,
          cur_state.twist.twist.linear.z;
+
+    v = R * v_body;
 
     Eigen::Quaterniond q;
     tf2::fromMsg(cur_state.pose.pose.orientation, q);
@@ -171,13 +177,22 @@ public:
     Eigen::Vector3d ex = x - xd_now;
     Eigen::Vector3d ev = v - vd;
 
+    // NEW: scale z error
+    Eigen::Vector3d ex_scaled = ex;
+    ex_scaled.z() *= 0.5;
+
     // ------------------------------------------------------------------
     // SE(3) Step 1 — Desired force vector
     // Fdes = -kx*ex - kv*ev + m*ad + m*g*e3
     // This replaces AC_PosControl's cascaded position+velocity PIDs.
     // ------------------------------------------------------------------
-    Eigen::Vector3d F_corr = -kx * ex - kv * ev + m * ad;
-    double max_corr = 0.3 * m * g;
+    // Eigen::Vector3d F_corr = -kx * ex - kv * ev + m * ad;
+    Eigen::Vector3d F_corr = -kx * ex_scaled - kv * ev + m * ad;
+
+    // double max_corr = 0.3 * m * g;
+    // if (F_corr.norm() > max_corr)
+    //   F_corr = F_corr * (max_corr / F_corr.norm());
+    double max_corr = 0.8 * m * g;
     if (F_corr.norm() > max_corr)
       F_corr = F_corr * (max_corr / F_corr.norm());
 
@@ -200,10 +215,25 @@ public:
     Rd.col(1) = b2d;
     Rd.col(2) = b3d;
 
+    Eigen::Vector3d eR_vec = 0.5 * Vee(Rd.transpose() * R - R.transpose() * Rd);
+
+    // Angular rate error (omega_d = 0 for hover/constant yaw)
+    Eigen::Vector3d eOmega = omega;  // since omega_d = 0
+
+    // SE3 moment command in body frame
+    Eigen::Vector3d tau = -kr * eR_vec
+                          - komega * eOmega
+                          + omega.cross(J * omega);  // gyroscopic feedforward
+
+    // Convert moment to desired angular acceleration, then to rate setpoint
+    // For AttitudeTarget, we send the desired body rate (feedforward term)
+    // Rd^T * omega_d_world — for hover this simplifies to:
+    Eigen::Vector3d omega_des = Rd.transpose() * (Eigen::Vector3d::Zero()); // omega_d = 0
+
+
     // Collective thrust: projection of desired force onto current body-z.
     // Clamped to [0.1, 0.85] in normalised [0,1] throttle range.
     double f         = std::max(F_des.dot(R * e3), 0.0);
-    static constexpr double T_MAX_RATIO = 3.5;   // tune this
     double thrust_n = std::clamp(f / (T_MAX_RATIO * m * g), 0.0, 0.75); 
     // double thrust_n = std::clamp(f / (2.0 * m * g), 0.0, 0.75);
     // double thrust_n = std::clamp(f / (2.0 * m * g), 0.0, 0.75);
@@ -223,9 +253,9 @@ public:
     mavros_msgs::msg::AttitudeTarget msg;
     msg.header.stamp    = this->get_clock()->now();
     msg.header.frame_id = "base_link";
-    msg.type_mask       = mavros_msgs::msg::AttitudeTarget::IGNORE_ROLL_RATE |
-                          mavros_msgs::msg::AttitudeTarget::IGNORE_PITCH_RATE |
-                          mavros_msgs::msg::AttitudeTarget::IGNORE_YAW_RATE;
+    msg.type_mask       = mavros_msgs::msg::AttitudeTarget::IGNORE_ROLL_RATE  |
+                      mavros_msgs::msg::AttitudeTarget::IGNORE_PITCH_RATE |
+                      mavros_msgs::msg::AttitudeTarget::IGNORE_YAW_RATE;
 
     Eigen::Quaterniond quat_des(Rd);
     quat_des.normalize();
@@ -238,11 +268,15 @@ public:
     msg.body_rate.y = 0.0;
     msg.body_rate.z = 0.0;
 
+    // msg.body_rate.x = omega_des.x() - kr * eR_vec.x();
+    // msg.body_rate.y = omega_des.y() - kr * eR_vec.y();
+    // msg.body_rate.z = omega_des.z() - kr * eR_vec.z();
+
     msg.thrust = thrust_n;
 
     propeller_speeds_publisher_->publish(msg);
 
-    Eigen::Vector3d eR_vec = 0.5 * Vee(Rd.transpose() * R - R.transpose() * Rd);
+    
 
     std_msgs::msg::Float64MultiArray dbg;
     dbg.data = {
