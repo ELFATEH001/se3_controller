@@ -1,6 +1,8 @@
 /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config/params.yaml
+/home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/record_se3_debug.launch.py
 /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/se3_controller_launch.py
 /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/lib/se3_controller/controller_node
+/home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/record_se3_debug.launch.py
 /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/launch/se3_controller_launch.py
 /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/se3_controller/config/params.yaml
 /home/aimane/drone_control_ws/src/se3_controller/install/se3_controller/share/ament_index/resource_index/package_run_dependencies/se3_controller

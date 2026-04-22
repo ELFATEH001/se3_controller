@@ -1043,8 +1043,22 @@ CMakeFiles/controller_node.dir/src/controller_node.cpp.o: ../../src/controller_n
   /opt/ros/humble/include/tf2_msgs/tf2_msgs/srv/detail/frame_graph__builder.hpp \
   /opt/ros/humble/include/tf2_msgs/tf2_msgs/srv/detail/frame_graph__traits.hpp \
   /opt/ros/humble/include/tf2_msgs/tf2_msgs/srv/detail/frame_graph__type_support.hpp \
-  /opt/ros/humble/include/tf2_msgs/tf2_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+  /opt/ros/humble/include/tf2_msgs/tf2_msgs/msg/rosidl_generator_cpp__visibility_control.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/float64_multi_array.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/float64_multi_array__struct.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/multi_array_layout__struct.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/multi_array_dimension__struct.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/float64_multi_array__builder.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/float64_multi_array__traits.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/multi_array_layout__traits.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/multi_array_dimension__traits.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/float64_multi_array__type_support.hpp \
+  /opt/ros/humble/include/std_msgs/std_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
 
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/multi_array_dimension__struct.hpp:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/float64_multi_array__struct.hpp:
 
 /opt/ros/humble/include/tf2_msgs/tf2_msgs/msg/rosidl_generator_cpp__visibility_control.hpp:
 
@@ -1182,6 +1196,8 @@ CMakeFiles/controller_node.dir/src/controller_node.cpp.o: ../../src/controller_n
 
 /usr/include/eigen3/Eigen/src/plugins/IndexedViewMethods.h:
 
+/opt/ros/humble/include/std_msgs/std_msgs/msg/rosidl_generator_cpp__visibility_control.hpp:
+
 /usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h:
 
 /usr/include/eigen3/Eigen/src/plugins/BlockMethods.h:
@@ -1277,6 +1293,8 @@ CMakeFiles/controller_node.dir/src/controller_node.cpp.o: ../../src/controller_n
 /usr/include/c++/11/cstddef:
 
 /usr/include/kdl/frames.hpp:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/float64_multi_array__builder.hpp:
 
 /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__builder.hpp:
 
@@ -1400,6 +1418,8 @@ CMakeFiles/controller_node.dir/src/controller_node.cpp.o: ../../src/controller_n
 
 /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__struct.hpp:
 
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/multi_array_layout__traits.hpp:
+
 /opt/ros/humble/include/nav_msgs/nav_msgs/msg/odometry.hpp:
 
 /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/attitude_target__type_support.hpp:
@@ -1413,6 +1433,8 @@ CMakeFiles/controller_node.dir/src/controller_node.cpp.o: ../../src/controller_n
 /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/attitude_target__builder.hpp:
 
 /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.hpp:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/float64_multi_array__type_support.hpp:
 
 /usr/include/eigen3/Eigen/src/Householder/BlockHouseholder.h:
 
@@ -1659,6 +1681,8 @@ CMakeFiles/controller_node.dir/src/controller_node.cpp.o: ../../src/controller_n
 /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__struct.hpp:
 
 /usr/include/c++/11/bits/stl_heap.h:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/multi_array_layout__struct.hpp:
 
 /opt/ros/humble/include/rcpputils/rcpputils/pointer_traits.hpp:
 
@@ -1995,6 +2019,8 @@ CMakeFiles/controller_node.dir/src/controller_node.cpp.o: ../../src/controller_n
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
 /usr/include/c++/11/bits/hashtable_policy.h:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/float64_multi_array.hpp:
 
 /usr/include/c++/11/bits/stl_raw_storage_iter.h:
 
@@ -2916,6 +2942,8 @@ CMakeFiles/controller_node.dir/src/controller_node.cpp.o: ../../src/controller_n
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
 
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/float64_multi_array__traits.hpp:
+
 /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/transform__builder.hpp:
 
 /usr/include/c++/11/cxxabi.h:
@@ -3025,6 +3053,8 @@ CMakeFiles/controller_node.dir/src/controller_node.cpp.o: ../../src/controller_n
 /opt/ros/humble/include/rclcpp/rclcpp/experimental/subscription_intra_process_buffer.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/experimental/create_intra_process_buffer.hpp:
+
+/opt/ros/humble/include/std_msgs/std_msgs/msg/detail/multi_array_dimension__traits.hpp:
 
 /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.hpp:
 

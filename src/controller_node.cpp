@@ -10,6 +10,8 @@
 #include <eigen3/Eigen/Dense>
 #include <tf2_eigen/tf2_eigen.hpp>
 #include <cstdlib>
+#include <geometry_msgs/msg/vector3_stamped.hpp>
+#include <std_msgs/msg/float64_multi_array.hpp>
 
 #define PI M_PI
 
@@ -17,6 +19,7 @@ class ControllerNode : public rclcpp::Node {
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr current_state_subscription_;
   rclcpp::Publisher<mavros_msgs::msg::AttitudeTarget>::SharedPtr propeller_speeds_publisher_;
+  rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr debug_pub_;
 
   double kx, kv, kr, komega;
   double m, g;
@@ -33,7 +36,7 @@ class ControllerNode : public rclcpp::Node {
   bool yaw_initialized_    = false;
   bool target_initialized_ = false;
   double xd_z_ramp_        = 0.0;
-  static constexpr double CLIMB_RATE = 0.3; // m/s
+  static constexpr double CLIMB_RATE = 0.1; // m/s
 
   static Eigen::Vector3d Vee(const Eigen::Matrix3d &in) {
     Eigen::Vector3d out;
@@ -51,8 +54,8 @@ public:
 
     // Declare parameters with safe defaults so the node doesn't crash
     // if gains are not passed — override at launch with -p kx:=4.0 etc.
-    declare_parameter<double>("kx",     4.0);
-    declare_parameter<double>("kv",     2.5);
+    declare_parameter<double>("kx",     1.5);
+    declare_parameter<double>("kv",     2.0);
     declare_parameter<double>("kr",     1.5);
     declare_parameter<double>("komega", 0.5);
 
@@ -94,6 +97,10 @@ public:
 
     propeller_speeds_publisher_ = this->create_publisher<mavros_msgs::msg::AttitudeTarget>(
       "/mavros/setpoint_raw/attitude", pub_qos);
+
+    debug_pub_ = this->create_publisher<std_msgs::msg::Float64MultiArray>(
+      "/se3/debug",
+      rclcpp::QoS(rclcpp::KeepLast(10)).reliable());
 
     timer_ = this->create_wall_timer(
       std::chrono::milliseconds(1000 / hz),
@@ -170,7 +177,7 @@ public:
     // This replaces AC_PosControl's cascaded position+velocity PIDs.
     // ------------------------------------------------------------------
     Eigen::Vector3d F_corr = -kx * ex - kv * ev + m * ad;
-    double max_corr = 1.5 * m * g;
+    double max_corr = 0.3 * m * g;
     if (F_corr.norm() > max_corr)
       F_corr = F_corr * (max_corr / F_corr.norm());
 
@@ -196,7 +203,10 @@ public:
     // Collective thrust: projection of desired force onto current body-z.
     // Clamped to [0.1, 0.85] in normalised [0,1] throttle range.
     double f         = std::max(F_des.dot(R * e3), 0.0);
-    double thrust_n  = std::clamp(f / (2.0 * m * g), 0.1, 0.85);
+    static constexpr double T_MAX_RATIO = 3.5;   // tune this
+    double thrust_n = std::clamp(f / (T_MAX_RATIO * m * g), 0.0, 0.75); 
+    // double thrust_n = std::clamp(f / (2.0 * m * g), 0.0, 0.75);
+    // double thrust_n = std::clamp(f / (2.0 * m * g), 0.0, 0.75);
 
     // ------------------------------------------------------------------
     // Build AttitudeTarget message
@@ -231,6 +241,24 @@ public:
     msg.thrust = thrust_n;
 
     propeller_speeds_publisher_->publish(msg);
+
+    Eigen::Vector3d eR_vec = 0.5 * Vee(Rd.transpose() * R - R.transpose() * Rd);
+
+    std_msgs::msg::Float64MultiArray dbg;
+    dbg.data = {
+      ex.x(),      ex.y(),      ex.z(),       // [0,1,2]  position error
+      ev.x(),      ev.y(),      ev.z(),       // [3,4,5]  velocity error
+      F_des.x(),   F_des.y(),   F_des.z(),   // [6,7,8]  desired force
+      F_norm,                                 // [9]
+      f,                                      // [10]     raw thrust (Newtons)
+      msg.thrust,                             // [11]     normalized thrust sent
+      eR_vec.x(),  eR_vec.y(),  eR_vec.z(), // [12,13,14] attitude error
+      omega.x(),   omega.y(),   omega.z(),  // [15,16,17] angular rates
+      xd_z_ramp_,                            // [18]     altitude target
+      b3d.x(),     b3d.y(),     b3d.z(),    // [19,20,21] desired thrust direction
+      x.z(),                                 // [22]     actual z (for easy comparison)
+    };
+    debug_pub_->publish(dbg);
   }
 };
 
