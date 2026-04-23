@@ -47,9 +47,22 @@ ament_target_dependencies(controller_node
   mavros_msgs         
 )
 
+add_executable(controller_node_visual src/controller_node_visual.cpp)
+ament_target_dependencies(controller_node_visual
+  rclcpp
+  Eigen3
+  nav_msgs
+  geometry_msgs       
+  tf2_geometry_msgs
+  tf2_eigen
+  tf2_ros
+  mavros_msgs         
+)
+
 
 install(TARGETS
   controller_node
+  controller_node_visual
   DESTINATION lib/${PROJECT_NAME})
 
 
