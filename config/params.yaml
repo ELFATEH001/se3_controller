@@ -1,7 +1,7 @@
 controller_node:
   ros__parameters:
-    kx: 1.9 #1.9
-    kv: 2.4 #2.4 
+    kx: 2.5 #1.9
+    kv: 4.0 #2.4 
     kr: 3.4 #3.4
     komega: 0.95 #0.95
     T_MAX_RATIO: 3.06

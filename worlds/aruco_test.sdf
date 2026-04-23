@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="aruco_test">
+    <physics name="default" type="ode">
+      <gravity>0 0 -9.81</gravity>
+    </physics>
+    
+    <!-- Ground plane -->
+    <include>
+      <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Ground Plane</uri>
+    </include>
+    
+    <!-- Sun -->
+    <include>
+      <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Sun</uri>
+    </include>
+    
+    <!-- ArUco Marker ID 0 -->
+    <include>
+      <uri>model://aruco_marker_id0</uri>
+      <pose>0 0 0.001 0 0 0</pose>
+    </include>
+    
+    <!-- ArUco Marker ID 1 -->
+    <include>
+      <uri>model://aruco_marker_id1</uri>
+      <pose>1 0 0.001 0 0 0</pose>
+    </include>
+    
+    <!-- ArUco Marker ID 2 -->
+    <include>
+      <uri>model://aruco_marker_id2</uri>
+      <pose>0 1 0.001 0 0 0</pose>
+    </include>
+    
+  </world>
+</sdf>
