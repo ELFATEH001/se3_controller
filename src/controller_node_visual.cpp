@@ -66,6 +66,8 @@ public:
     declare_parameter<double>("komega", 0.5);
     declare_parameter<double>("T_MAX_RATIO", 3.06);
 
+    
+
     get_parameter("kx",     kx);
     get_parameter("kv",     kv);
     get_parameter("kr",     kr);
