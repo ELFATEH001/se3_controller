@@ -97,14 +97,14 @@
       <pose degrees="true">0 0 0.195 0 0 90</pose>
     </include>
 
-    <!-- ===== ArUco marker on the ground ===== -->
-    <model name="aruco_marker">
+    <!-- ===== ArUco Marker 0 — ID 0 — primary target (4m right, 3m back) ===== -->
+    <model name="aruco_marker_0">
       <static>true</static>
-      <pose>0 0 0.001 0 0 0</pose>
+      <pose>4.0 -3.0 0.001 0 0 0</pose>
       <link name="link">
         <visual name="visual">
           <geometry>
-            <box><size>0.40 0.40 0.001</size></box>  <!-- 40cm for visibility at 2-3m -->
+            <box><size>0.40 0.40 0.001</size></box>
           </geometry>
           <material>
             <diffuse>1 1 1 1</diffuse>
@@ -112,6 +112,33 @@
             <pbr>
               <metal>
                 <albedo_map>/home/aimane/.gazebo/materials/textures/aruco_0.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box><size>0.40 0.40 0.001</size></box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- ===== ArUco Marker 1 — ID 1 — secondary target (−3m left, 4m forward) ===== -->
+    <model name="aruco_marker_1">
+      <static>true</static>
+      <pose>-3.0 4.0 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>0.40 0.40 0.001</size></box>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>1 1 1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>/home/aimane/.gazebo/materials/textures/aruco_1.png</albedo_map>
               </metal>
             </pbr>
           </material>

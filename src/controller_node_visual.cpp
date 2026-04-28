@@ -80,10 +80,13 @@ public:
     auto sub_qos = rclcpp::QoS(rclcpp::KeepLast(10))
                      .reliability(rclcpp::ReliabilityPolicy::BestEffort)
                      .durability(rclcpp::DurabilityPolicy::Volatile);
+    auto qos_mavros = rclcpp::QoS(rclcpp::KeepLast(10))
+                    .reliability(rclcpp::ReliabilityPolicy::BestEffort);
 
     current_state_subscription_ = this->create_subscription<nav_msgs::msg::Odometry>(
-      "/mavros/local_position/odom", sub_qos,
-      std::bind(&controller_node_visual::onCurrentState, this, std::placeholders::_1));
+    "/mavros/local_position/odom", qos_mavros,
+    std::bind(&controller_node_visual::onCurrentState, this, std::placeholders::_1));
+
 
     vel_setpoint_sub_ = this->create_subscription<geometry_msgs::msg::TwistStamped>(
     "/visual_servo/velocity_setpoint", 10,
