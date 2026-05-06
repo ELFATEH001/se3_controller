@@ -12,7 +12,11 @@
 #include <cstdlib>
 #include <geometry_msgs/msg/vector3_stamped.hpp>
 #include <geometry_msgs/msg/twist_stamped.hpp>
+#include <std_msgs/msg/bool.hpp> 
+
+
 #include <std_msgs/msg/float64_multi_array.hpp>
+
 
 #define PI M_PI
 
@@ -20,6 +24,7 @@ class controller_node_visual : public rclcpp::Node {
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr current_state_subscription_;
   rclcpp::Subscription<geometry_msgs::msg::TwistStamped>::SharedPtr vel_setpoint_sub_;
+  rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr               enable_sub_;  
   rclcpp::Publisher<mavros_msgs::msg::AttitudeTarget>::SharedPtr propeller_speeds_publisher_;
   rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr debug_pub_;
 
@@ -39,6 +44,9 @@ class controller_node_visual : public rclcpp::Node {
   bool target_initialized_ = false;
   double xd_z_ramp_        = 0.0;
   static constexpr double CLIMB_RATE = 0.1; // m/s
+
+  bool enabled_ = false;
+
 
   // vars visual servo node
   Eigen::Vector3d vd_from_servo_;
@@ -92,6 +100,9 @@ public:
     "/visual_servo/velocity_setpoint", 10,
     std::bind(&controller_node_visual::velocitySetpointCallback, this, std::placeholders::_1));
 
+    enable_sub_ = this->create_subscription<std_msgs::msg::Bool>(
+    "/visual_servo/enable", 10,
+    std::bind(&controller_node_visual::enable_callback, this, std::placeholders::_1));
     // ---------------------------------------------------------------
     // FIX: publish to /mavros/setpoint_raw/attitude, NOT
     //      /mavros/setpoint_attitude/attitude.
@@ -179,10 +190,17 @@ public:
       }
   }
 
+  void enable_callback(const std_msgs::msg::Bool::SharedPtr msg) {
+    enabled_ = msg->data;
+    RCLCPP_INFO(this->get_logger(),
+        "SE3 controller %s", enabled_ ? "ENABLED (LOCKING)" : "DISABLED (position hold)");
+  }
+
   // -------------------------------------------------------------------
   void controlLoop() {
     // Block until at least one odometry message has been received
     if (!yaw_initialized_) return;
+    if (!enabled_) return;
 
     // If we have a velocity setpoint from visual servo, track it
     if (has_velocity_setpoint_) {
@@ -209,23 +227,6 @@ public:
         xd = Eigen::Vector3d(xd.x(), xd.y(), xd_z_ramp_);
         vd.setZero();
         ad.setZero();
-    }
-
-    // Latch XY target at current position on first run; start Z ramp
-    // if (!target_initialized_) {
-    //   xd_z_ramp_ = std::max(x.z(), 0.0);
-    //   xd.x()     = x.x();
-    //   xd.y()     = x.y();
-    //   target_initialized_ = true;
-    //   RCLCPP_INFO(this->get_logger(),
-    //     "Target initialized at [%.2f, %.2f, %.2f]",
-    //     xd.x(), xd.y(), xd_z_ramp_);
-    // }
-
-    // Ramp altitude up to 2 m at CLIMB_RATE m/s
-    if (xd_z_ramp_ < 2.0) {
-      xd_z_ramp_ = std::min(
-        xd_z_ramp_ + CLIMB_RATE / static_cast<double>(hz), 2.0);
     }
 
     Eigen::Vector3d xd_now(xd.x(), xd.y(), xd_z_ramp_);

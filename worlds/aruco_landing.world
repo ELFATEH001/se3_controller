@@ -100,7 +100,7 @@
     <!-- ===== ArUco Marker 0 — ID 0 — primary target (4m right, 3m back) ===== -->
     <model name="aruco_marker_0">
       <static>true</static>
-      <pose>4.0 -3.0 0.001 0 0 0</pose>
+      <pose>1.0 -1.0 0.001 0 0 0</pose>
       <link name="link">
         <visual name="visual">
           <geometry>
